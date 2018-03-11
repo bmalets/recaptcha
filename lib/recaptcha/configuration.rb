@@ -34,6 +34,9 @@ module Recaptcha
     def initialize #:nodoc:
       @skip_verify_env            = %w[test cucumber]
       @handle_timeouts_gracefully = HANDLE_TIMEOUTS_GRACEFULLY
+
+      @site_key = Rails.application.config_for(:recaptcha)['site_key']
+      @secret_key = Rails.application.config_for(:recaptcha)['secret_key']
     end
 
     def secret_key!

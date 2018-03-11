@@ -28,6 +28,7 @@ module Recaptcha
   def self.configure
     config = configuration
     yield(config)
+    @configuration = config
   end
 
   def self.with_configuration(config)

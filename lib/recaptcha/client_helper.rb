@@ -76,7 +76,9 @@ module Recaptcha
       end
 
       unless Recaptcha::Verify.skip?(env)
-        site_key ||= Recaptcha.configuration.site_key!
+        site_key ||= Recaptcha.configuration.site_key
+        raise "Recaptcha SITE_KEY is blank."
+
         script_url = Recaptcha.configuration.api_server_url
         script_url += "?hl=#{hl}" unless hl == ""
         html << %(<script src="#{script_url}" async defer></script>\n) unless skip_script
