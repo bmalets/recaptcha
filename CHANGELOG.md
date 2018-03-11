@@ -1,3 +1,6 @@
+## 4.6.6.1 - 2018-03-11
+* removed ENV variables
+
 ## 4.0.0 - 2016-11-14
 * public_key -> site_key and private_key -> secret_key
 

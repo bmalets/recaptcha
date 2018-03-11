@@ -16,17 +16,18 @@ which throws an error on failiure.
 [obtain a reCAPTCHA API key](https://www.google.com/recaptcha/admin). Note: Use localhost or 127.0.0.1 in domain if using localhost:3000.
 
 ```Ruby
-gem "recaptcha", require: "recaptcha/rails"
+gem 'recaptcha', github: 'bmalets/recaptcha', require: 'recaptcha/rails'
 ```
 
-Keep keys out of the code base with environment variables.<br/>
-Set in production and locally use [dotenv](https://github.com/bkeepers/dotenv), make sure to add it above recaptcha.
-
-Otherwise see [Alternative API key setup](#alternative-api-key-setup).
-
-```
-export RECAPTCHA_SITE_KEY  = '6Lc6BAAAAAAAAChqRbQZcn_yyyyyyyyyyyyyyyyy'
-export RECAPTCHA_SECRET_KEY = '6Lc6BAAAAAAAAKN3DRm6VA_xxxxxxxxxxxxxxxxx'
+Set SITE_KEY and SECRET_KEY:
+``
+# config/initializers/recaptcha.rb
+Recaptcha.configure do |config|
+  config.site_key  = '6Lc6BAAAAAAAAChqRbQZcn_yyyyyyyyyyyyyyyyy'
+  config.secret_key = '6Lc6BAAAAAAAAKN3DRm6VA_xxxxxxxxxxxxxxxxx'
+  # Uncomment the following line if you are using a proxy server:
+  # config.proxy = 'http://myproxy.com.au:8080'
+end
 ```
 
 Add `recaptcha_tags` to the forms you want to protect.
